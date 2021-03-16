@@ -8,6 +8,30 @@ Wintellect helps you drive innovation by modernizing your applications and data.
 
 [https://www.t4d.io/wintellect-python-essentials-03152021](https://www.t4d.io/wintellect-python-essentials-03152021)
 
+## PIP Commands
+
+- Install Packages
+
+```bash
+python -m pip install autopep8 pylint
+```
+
+- Create a requirements file
+
+```bash
+python -m pip freeze > requirements.txt
+```
+
+- Install requirements file
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+
+
+
+
 ## Other Resources
 
 The instructor will distribute additional private links during class for downloading courseware, registering for class completion badges, and downloading recordings...

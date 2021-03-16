@@ -52,9 +52,7 @@ while command:
         print("-------------------------")
 
         for history_entry in history:
-            print(str(history_entry[0]).rjust(3) +
-                  " | " +
-                  history_entry[1].ljust(7) +
+            print(str(history_entry[0]).rjust(3) + " | " + history_entry[1].ljust(7) +
                   " | " +
                   str(history_entry[2]).rjust(8))
 

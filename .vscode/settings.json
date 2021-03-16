@@ -13,7 +13,7 @@
     "python.linting.pylintArgs": [
         "--max-line-length=79",
         "--unsafe-load-any-extension=y",
-        "--disable=invalid-name,missing-module-docstring"
+        "--disable=invalid-name,missing-module-docstring,missing-function-docstring"
     ],
     "python.pythonPath": "venv\\Scripts\\python.exe"
 }
