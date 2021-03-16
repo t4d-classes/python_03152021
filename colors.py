@@ -1,3 +1,5 @@
+"""Colors Module"""
+
 colors = []
 
 last_color_id = 0
@@ -32,6 +34,7 @@ while command:
         print("Id  Name            Hexcode")
         print("---------------------------")
         for color in colors:
-            print(str(color[0]).rjust(2) + ' ' + color[1].ljust(15) + ' ' + color[2])
+            print(str(color[0]).rjust(2) + ' ' +
+                  color[1].ljust(15) + ' ' + color[2])
 
     command = input("Please enter a command > ")
