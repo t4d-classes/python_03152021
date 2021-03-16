@@ -1,5 +1,3 @@
-"""Colors Module"""
-
 colors = []
 
 last_color_id = 0

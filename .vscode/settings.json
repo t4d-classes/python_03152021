@@ -12,7 +12,8 @@
     "python.linting.pylintUseMinimalCheckers": false,
     "python.linting.pylintArgs": [
         "--max-line-length=79",
-        "--unsafe-load-any-extension=y"
+        "--unsafe-load-any-extension=y",
+        "--disable=invalid-name,missing-module-docstring"
     ],
     "python.pythonPath": "venv/bin/python"
 }

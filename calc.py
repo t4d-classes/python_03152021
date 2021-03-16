@@ -1,5 +1,3 @@
-"""Calc Module"""
-
 result = 0
 history = []
 next_history_entry_id = 0
