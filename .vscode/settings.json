@@ -15,5 +15,5 @@
         "--unsafe-load-any-extension=y",
         "--disable=invalid-name,missing-module-docstring"
     ],
-    "python.pythonPath": "venv/bin/python"
+    "python.pythonPath": "venv\\Scripts\\python.exe"
 }
