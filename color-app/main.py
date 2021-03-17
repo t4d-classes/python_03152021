@@ -7,15 +7,7 @@ while command:
     if command == "append":
         color_name = input("Color Name > ")
         color_hexcode = input("Color Hexcode > ")
-        next_color_id = max([c["id"] for c in colors] or [0]) + 1
 
-        color = {
-            "id": next_color_id,
-            "name": color_name,
-            "hexcode": color_hexcode,
-        }
-
-        colors.append(color)
     elif command == "remove":
         color_id = int(input("Enter a Color Id to Remove > "))
 

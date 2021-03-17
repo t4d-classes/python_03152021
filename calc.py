@@ -1,15 +1,14 @@
 from functools import reduce
 
 calc_ops = [
-    (1, "Add", "add", lambda x, y: x + y),
-    (2, "Subtract", "subtract", lambda x, y: x - y),
-    (3, "Multiply", "multiply", lambda x, y: x * y),
-    (4, "Divide", "divide", lambda x, y: x / y),
-    (5, "Exponent", "exponent", lambda x, y: x**y),
+    {"id": 1, "label": "Add", "command": "add", "fn": lambda x, y: x + y},
+    {"id": 2, "label": "Subtract", "command": "subtract", "fn": lambda x, y: x - y},
+    {"id": 3, "label": "Multiply", "command": "multiply", "fn": lambda x, y: x * y},
+    {"id": 4, "label": "Divide", "command": "divide", "fn": lambda x, y: x / y},
+    {"id": 5, "label": "Exponent", "command": "exponent", "fn": lambda x, y: x**y},
 ]
 
 history = []
-next_history_entry_id = 0
 
 
 def input_int(prompt):
@@ -33,25 +32,24 @@ def get_history_entry_id():
 
 
 def create_history_entry(entry_id, op_name, op_value):
-    return (entry_id, op_name, op_value)
+    return {"id": entry_id, "op_name": op_name, "op_value": op_value}
 
 
-def append_history_entry(history_list, entry_id, op_name, op_value):
+def append_history_entry(history_list, op_name, op_value):
 
-    next_entry_id = entry_id + 1
+    next_entry_id = max([h["id"] for h in history_list] or [0]) + 1
 
     new_history_entry = create_history_entry(
         next_entry_id, op_name, op_value)
     history_list.append(new_history_entry)
-    return next_entry_id
 
 
 def calc_operation(result, entry):
 
     for calc_op in calc_ops:
-        if entry[1] == calc_op[2]:
-            calc_op_fn = calc_op[3]
-            return calc_op_fn(result, entry[2])
+        if entry["op_name"] == calc_op["command"]:
+            calc_op_fn = calc_op["fn"]
+            return calc_op_fn(result, entry["op_value"])
 
     return result
 
@@ -71,8 +69,8 @@ def display_operation_counts(history_list):
 
     for calc_op in calc_ops:
         calc_op_count = len(
-            [entry for entry in history_list if entry[1] == calc_op[2]])
-        calc_op_counts.append((calc_op[1], calc_op_count))
+            [entry for entry in history_list if entry["op_name"] == calc_op["command"]])
+        calc_op_counts.append((calc_op["label"], calc_op_count))
 
     print("Op Counts")
     print("---------")
@@ -85,17 +83,19 @@ def display_history(history_list):
     print("-------------------------")
 
     for history_entry in history_list:
-        print(str(history_entry[0]).rjust(3) + " | " + history_entry[1].ljust(7) +
+        print(str(history_entry["id"]).rjust(3) + " | " + history_entry["op_name"].ljust(7) +
               " | " +
-              str(history_entry[2]).rjust(8))
+              str(history_entry["op_value"]).rjust(8))
 
 
 def remove_history_entry(history_list, entry_id):
     for entry in history_list:
-        if entry[0] == entry_id:
+        if entry["id"] == entry_id:
             history_list.remove(entry)
             break
 
+
+op_commands = [calc_op["command"] for calc_op in calc_ops]
 
 command = "clear"
 
@@ -109,10 +109,11 @@ while command:
         remove_history_entry(history, history_entry_id)
     elif command == "clear":
         history = []
-    else:
+    elif command in op_commands:
         num = get_operand()
-        next_history_entry_id = append_history_entry(
-            history, next_history_entry_id, command, num)
+        append_history_entry(history, command, num)
         print("Result: " + str(calc_result(history)))
+    else:
+        print("Invalid command. Would you like to play a nice game of chess?")
 
     command = get_command()
