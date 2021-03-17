@@ -4,18 +4,30 @@ from color import Color
 class ColorList:
 
     def __init__(self):
-        self.colors = []
+        self._colors = []
 
     def append(self, color_name, color_hexcode):
-        next_color_id = max([c.id for c in self.colors] or [0]) + 1
+        next_color_id = max([c.id for c in self._colors] or [0]) + 1
         new_color = Color(next_color_id, color_name, color_hexcode)
-        self.colors.append(new_color)
+        self._colors.append(new_color)
 
     def remove(self, color_id):
-        for color in self.colors:
+        for color in self._colors:
             if color_id == color.id:
-                self.colors.remove(color)
+                self._colors.remove(color)
                 break
 
     def clear(self):
-        self.colors.clear()
+        self._colors.clear()
+
+    def headers(self):
+        return ["Id", "Name", "Hexcode"]
+
+    def __len__(self):
+        return len(self._colors)
+
+    def __iter__(self):
+        return self._colors.__iter__()
+
+    def __next__(self):
+        return self._colors.__next__()

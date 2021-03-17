@@ -1,34 +1,32 @@
-colors = []
+from color_list import ColorList
+from list_console_view import ListConsoleView
 
-command = input("Please enter a command > ")
 
-while command:
+def main():
 
-    if command == "append":
-        color_name = input("Color Name > ")
-        color_hexcode = input("Color Hexcode > ")
-
-    elif command == "remove":
-        color_id = int(input("Enter a Color Id to Remove > "))
-
-        for color in colors:
-            if color_id == color["id"]:
-                colors.remove(color)
-                break
-
-    elif command == "clear":
-
-        colors.clear()
-
-    elif command == "count":
-
-        print("Number of Colors: " + str(len(colors)))
-
-    elif command == "list":
-        print("Id  Name            Hexcode")
-        print("---------------------------")
-        for color in colors:
-            print(str(color["id"]).rjust(2) + ' ' +
-                  color["name"].ljust(15) + ' ' + color["hexcode"])
+    colors = ColorList()
 
     command = input("Please enter a command > ")
+
+    while command:
+
+        if command == "append":
+            color_name = input("Color Name > ")
+            color_hexcode = input("Color Hexcode > ")
+            colors.append(color_name, color_hexcode)
+        elif command == "remove":
+            color_id = int(input("Enter a Color Id to Remove > "))
+            colors.remove(color_id)
+        elif command == "clear":
+            colors.clear()
+        elif command == "count":
+            list_console_view = ListConsoleView(colors)
+            list_console_view.display_count()
+        elif command == "list":
+            list_console_view = ListConsoleView(colors)
+            list_console_view.display_table()
+        command = input("Please enter a command > ")
+
+
+if __name__ == '__main__':
+    main()
