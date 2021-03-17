@@ -1,7 +1,5 @@
 colors = []
 
-last_color_id = 0
-
 command = input("Please enter a command > ")
 
 while command:
@@ -9,14 +7,20 @@ while command:
     if command == "append":
         color_name = input("Color Name > ")
         color_hexcode = input("Color Hexcode > ")
-        last_color_id = last_color_id + 1
-        color = (last_color_id, color_name, color_hexcode)
+        next_color_id = max([c["id"] for c in colors] or [0]) + 1
+
+        color = {
+            "id": next_color_id,
+            "name": color_name,
+            "hexcode": color_hexcode,
+        }
+
         colors.append(color)
     elif command == "remove":
         color_id = int(input("Enter a Color Id to Remove > "))
 
         for color in colors:
-            if color_id == color[0]:
+            if color_id == color["id"]:
                 colors.remove(color)
                 break
 
@@ -32,7 +36,7 @@ while command:
         print("Id  Name            Hexcode")
         print("---------------------------")
         for color in colors:
-            print(str(color[0]).rjust(2) + ' ' +
-                  color[1].ljust(15) + ' ' + color[2])
+            print(str(color["id"]).rjust(2) + ' ' +
+                  color["name"].ljust(15) + ' ' + color["hexcode"])
 
     command = input("Please enter a command > ")
