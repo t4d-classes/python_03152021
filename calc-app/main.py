@@ -22,7 +22,8 @@ def main():
             history.clear()
         elif command in calc_op_commands:
             num = get_operand()
-            history.append(command, num)
+            # history.append(command, num)
+            history += (command, num)
             print(f"Result: {history.result}")
         else:
             print("Invalid command. Please try again.")

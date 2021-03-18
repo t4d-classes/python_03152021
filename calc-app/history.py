@@ -40,6 +40,10 @@ class History:
 
         return result
 
+    def __add__(self, history_entry):
+        self.append(*history_entry)
+        return self
+
     @property
     def __dict__(self):
         return [entry.__dict__ for entry in self._entries]
