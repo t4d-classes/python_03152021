@@ -40,7 +40,15 @@ class History:
 
         return result
 
+    @property
+    def result(self):
+        return reduce(self._calc_operation, self._entries, 0)
+
+    # def __repr__(self):
+    #     return f"Result: {self.result}"
+
     def __add__(self, history_entry):
+        # self.append(history_entry[0], history_entry[1])
         self.append(*history_entry)
         return self
 
@@ -48,11 +56,8 @@ class History:
     def __dict__(self):
         return [entry.__dict__ for entry in self._entries]
 
-    @property
-    def result(self):
-        return reduce(self._calc_operation, self._entries, 0)
-
     def __len__(self):
+        # return self._entries.__len__()
         return len(self._entries)
 
     def __iter__(self):

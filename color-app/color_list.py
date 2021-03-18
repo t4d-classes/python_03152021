@@ -4,7 +4,7 @@ from color import Color
 class ColorList:
 
     def __init__(self):
-        self._colors = []
+        self._colors = [] # composition
 
     def append(self, color_name, color_hexcode):
         next_color_id = max([c.id for c in self._colors] or [0]) + 1
