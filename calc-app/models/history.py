@@ -1,15 +1,10 @@
 from functools import reduce
 
-
-class HistoryEntry:
-
-    def __init__(self, entry_id, entry_op_name, entry_op_value):
-        self.id = entry_id
-        self.op_name = entry_op_name
-        self.op_value = entry_op_value
+from mixins.json_mixin import JsonMixin
+from models.history_entry import HistoryEntry
 
 
-class History:
+class History(JsonMixin):
 
     def __init__(self, calc_ops):
         self._entries = []
@@ -65,3 +60,15 @@ class History:
 
     def __next__(self):
         return next(self._entries)
+
+    @property
+    def _data_(self):
+        return self._entries
+
+    @_data_.setter
+    def _data_(self, entries):
+        self._entries = [
+            HistoryEntry(
+                entry["id"],
+                entry["op_name"],
+                entry["op_value"]) for entry in entries]
