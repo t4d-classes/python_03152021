@@ -78,7 +78,7 @@ class ColorList:
 
         with ZipFile(zip_file_name, "r") as zip_file:
 
-            # read CSV content into in-memory file-like objecct
+            # read CSV content into in-memory file-like object
             csv_input = io.StringIO(
                 zip_file.read("colors.csv").decode("UTF-8"))
 

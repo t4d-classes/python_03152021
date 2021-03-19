@@ -67,7 +67,7 @@ pdoc --docformat google ./**/*.py
 Output the documentation to an HTML folder instead of running a web server.
 
 ```bash
-pdoc -0 ./html --docformat google ./**/*.py
+pdoc -o ./html --docformat google ./**/*.py
 ```
 
 ## Python Style Guide

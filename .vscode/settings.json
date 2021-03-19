@@ -15,7 +15,7 @@
         "--unsafe-load-any-extension=y",
         "--disable=invalid-name,missing-module-docstring,missing-function-docstring,missing-class-docstring"
     ],
-    "python.pythonPath": "venv/bin/python",
+    "python.pythonPath": "venv\\Scripts\\python.exe",
     "files.exclude": {
         "**/venv": true,
         "**/__pycache__": true,
