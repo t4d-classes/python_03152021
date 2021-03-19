@@ -65,12 +65,29 @@
                     <h1 class="modulename">
 models.history    </h1>
 
-                        <div class="docstring"><p>History Class Module</p>
+                        <div class="docstring"><p>Provides the History class.</p>
+
+<p>The History class is the primary data structure of the Calc App program. It
+stores the history of math operations performed with the calculator.</p>
+
+<p>Typical usage example:</p>
+
+<p>history = History(calc_ops)<br>
+  history.append("add", 2.0)</p>
 </div>
 
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot; History Class Module &quot;&quot;&quot;</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;Provides the History class.</span>
+
+<span class="sd">The History class is the primary data structure of the Calc App program. It</span>
+<span class="sd">stores the history of math operations performed with the calculator.</span>
+
+<span class="sd">  Typical usage example:</span>
+
+<span class="sd">  history = History(calc_ops)&lt;br&gt;</span>
+<span class="sd">  history.append(&quot;add&quot;, 2.0)</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 
@@ -79,7 +96,12 @@ models.history    </h1>
 
 
 <span class="k">class</span> <span class="nc">History</span><span class="p">(</span><span class="n">JsonMixin</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Manages the operation history &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Manages the operation history</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _entries: A list of math operation entries.</span>
+<span class="sd">        _calc_ops: The list of math operations configured for the calculator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calc_ops</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_entries</span> <span class="o">=</span> <span class="p">[]</span>
@@ -178,7 +200,12 @@ models.history    </h1>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">History</span><span class="p">(</span><span class="n">JsonMixin</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Manages the operation history &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Manages the operation history</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _entries: A list of math operation entries.</span>
+<span class="sd">        _calc_ops: The list of math operations configured for the calculator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calc_ops</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_entries</span> <span class="o">=</span> <span class="p">[]</span>
@@ -265,6 +292,13 @@ models.history    </h1>
         </details>
 
             <div class="docstring"><p>Manages the operation history</p>
+
+<h6 id="attributes">Attributes</h6>
+
+<ul>
+<li><strong>_entries:</strong>  A list of math operation entries.</li>
+<li><strong>_calc_ops:</strong>  The list of math operations configured for the calculator.</li>
+</ul>
 </div>
 
 
