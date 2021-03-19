@@ -1,10 +1,11 @@
+import csv
 from color import Color
 
 
 class ColorList:
 
     def __init__(self):
-        self._colors = [] # composition
+        self._colors = []  # composition
 
     def append(self, color_name, color_hexcode):
         next_color_id = max([c.id for c in self._colors] or [0]) + 1
@@ -27,7 +28,25 @@ class ColorList:
         return len(self._colors)
 
     def __iter__(self):
-        return self._colors.__iter__()
+        return iter(self._colors)
 
     def __next__(self):
-        return self._colors.__next__()
+        return next(self._colors)
+
+    def save(self, csv_file_name):
+
+        with open(csv_file_name, "w") as csv_file:
+            writer = csv.DictWriter(
+                csv_file, fieldnames=[
+                    "id", "name", "hexcode"])
+            writer.writeheader()
+            for color in self._colors:
+                writer.writerow(color.__dict__)
+
+    def load(self, csv_file_name):
+
+        with open(csv_file_name, "r") as csv_file:
+            color_rows = csv.DictReader(csv_file)
+
+            self._colors = [Color(int(c["id"]), c["name"], c["hexcode"])
+                            for c in color_rows]

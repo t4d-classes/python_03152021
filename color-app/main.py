@@ -25,6 +25,12 @@ def main():
         elif command == "list":
             list_console_view = ListConsoleView(colors)
             list_console_view.display_table()
+        elif command == "save":
+            csv_file_name = input("CSV File Name > ")
+            colors.save(csv_file_name)
+        elif command == "load":
+            csv_file_name = input("CSV File Name > ")
+            colors.load(csv_file_name)
         command = input("Please enter a command > ")
 
 
