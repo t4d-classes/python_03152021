@@ -12,19 +12,27 @@ For this introductory course, three simpler tools will be explored. Each of thes
 
 ## Help
 
+Start a REPL session.
+
 ```bash
 python
 ```
 
+Import the module for which help is needed.
+
 ```python
 import models.history
 ```
+
+View the help documentation.
 
 ```python
 help(models.history)
 ```
 
 ## Pydoc
+
+Start the PyDoc web server that serves up the generated documentation. Open the web site in your browser.
 
 ```bash
 python -m pydoc -b
