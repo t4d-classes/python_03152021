@@ -60,6 +60,7 @@ class AppCommands:
             "save": cls.command_save,
             "load": cls.command_load,
             "save history report": cls.command_save_history_report,
+            "noop": lambda *args: None,
         }
 
         for calc_op_command in calc_op_commands:
