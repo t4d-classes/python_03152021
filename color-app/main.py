@@ -31,6 +31,12 @@ def main():
         elif command == "load":
             csv_file_name = input("CSV File Name > ")
             colors.load(csv_file_name)
+        elif command == "save zip":
+            zip_file_name = input("Zip File Name > ")
+            colors.save_zip(zip_file_name)
+        elif command == "load zip":
+            zip_file_name = input("Zip File Name > ")
+            colors.load_zip(zip_file_name)
         command = input("Please enter a command > ")
 
 
